@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── Área de impresión: invisible en pantalla, ocupa la hoja al imprimir ── */
+.print-recipe-area {
+  position: absolute;
+  left: -99999px;
+  top: 0;
+  width: 210mm;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-recipe-area,
+  .print-recipe-area * {
+    visibility: visible;
+  }
+  .print-recipe-area {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 20mm 25mm;
+    background: white;
+    overflow: visible;
+    pointer-events: none;
+  }
+}
