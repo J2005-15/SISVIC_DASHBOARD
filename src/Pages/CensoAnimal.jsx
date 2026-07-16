@@ -556,7 +556,7 @@ export default function CensoAnimal({ setVistaActual, onGuardar }) {
                   registros.map((reg) => (
                     <tr key={reg.id_animal} className="hover:bg-gray-50">
                       <td className="px-4 py-3 font-semibold text-gray-800">{reg.animal_name}</td>
-                      <td className="px-4 py-3 text-gray-600">{reg.Owners?.full_name ?? '—'}</td>
+                      <td className="px-4 py-3 text-gray-600">{reg.Owner?.full_name ?? '—'}</td>
                       <td className="px-4 py-3 text-gray-700">{reg.species}</td>
                       <td className="px-4 py-3 text-gray-700">{reg.breed}</td>
                       <td className="px-4 py-3 text-gray-700">{reg.color}</td>

@@ -118,7 +118,7 @@ export default function PanelPrincipal() {
 
             {/* ── Vistas principales de módulos ─────────────────────── */}
             {vistaActual === 'inicio' && (
-              <Resumen setVistaActual={setVistaActual} esAdministrador={esAdministrador} />
+              <Resumen setVistaActual={setVistaActual} esAdmin={esAdministrador} />
             )}
 
             {/* Menú -> Componente Real: un solo paso. CensoAnimal ya maneja
@@ -192,8 +192,7 @@ export default function PanelPrincipal() {
 
             {/* ── Vistas de perfil y administración ────────────── */}
             {vistaActual === 'perfil'           && <MiPerfil setVistaActual={setVistaActual} />}
-            {vistaActual === 'actividades' && esAdministrador && <Actividades setVistaActual={setVistaActual} />}
-            {vistaActual === 'configuracion' && esAdministrador && <Configuracion setVistaActual={setVistaActual} />}
+{vistaActual === 'configuracion' && esAdministrador && <Configuracion setVistaActual={setVistaActual} />}
             {vistaActual === 'usuarios' && esAdministrador && <GestionUsuarios setVistaActual={setVistaActual} />}
             {vistaActual === 'personal' && esAdministrador && <GestionPersonal setVistaActual={setVistaActual} />}
             {vistaActual === 'voluntarios' && esAdministrador && <GestionVoluntarios setVistaActual={setVistaActual} />}

@@ -372,7 +372,7 @@ export default function ConsultaMedica({ setVistaActual, readOnly = false }) {
                     </td>
                     <td className="px-5 py-3.5 whitespace-nowrap">
                       <code className="text-xs font-mono text-gray-600 bg-gray-50 px-1.5 py-0.5 rounded border border-gray-100">
-                        {c.Users?.full_name ?? '—'}
+                        {c.User?.full_name ?? '—'}
                       </code>
                     </td>
                     <td className="px-5 py-3.5 max-w-[200px]">
@@ -382,7 +382,7 @@ export default function ConsultaMedica({ setVistaActual, readOnly = false }) {
                       <p className="text-sm text-gray-500 truncate" title={c.diagnosis}>{c.diagnosis}</p>
                     </td>
                     <td className="px-5 py-3.5 whitespace-nowrap">
-                      <p className="text-sm font-medium text-gray-800">{c.Users?.full_name ?? '—'}</p>
+                      <p className="text-sm font-medium text-gray-800">{c.User?.full_name ?? '—'}</p>
                     </td>
                     <td className="px-5 py-3.5">
                       <BadgeConsulta estado={c._estado} />
@@ -471,7 +471,7 @@ export default function ConsultaMedica({ setVistaActual, readOnly = false }) {
               {[
                 { label: 'Peso (kg)',    value: modalHistoria.weight_kg   != null ? `${modalHistoria.weight_kg} kg`  : '—' },
                 { label: 'Temperatura', value: modalHistoria.temperature  != null ? `${modalHistoria.temperature} °C` : '—' },
-                { label: 'Veterinario', value: modalHistoria.Users?.full_name ?? '—' },
+                { label: 'Veterinario', value: modalHistoria.User?.full_name ?? '—' },
                 { label: 'Estado',      value: <BadgeConsulta estado={derivarEstado(modalHistoria.appointment_date)} /> },
               ].map(({ label, value }) => (
                 <div key={label}>

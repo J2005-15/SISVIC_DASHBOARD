@@ -183,8 +183,8 @@ export default function Bitacora() {
                       <p className="text-sm text-gray-600">{formatearFecha(r.created_at)}</p>
                     </td>
                     <td className="px-5 py-3.5 whitespace-nowrap">
-                      <p className="text-sm font-semibold text-gray-800">{r.Users?.full_name ?? `Usuario #${r.id_user ?? '—'}`}</p>
-                      <p className="text-xs text-gray-400">{r.Users?.email ?? ''}</p>
+                      <p className="text-sm font-semibold text-gray-800">{r.User?.full_name ?? `Usuario #${r.id_user ?? '—'}`}</p>
+                      <p className="text-xs text-gray-400">{r.User?.email ?? ''}</p>
                     </td>
                     <td className="px-5 py-3.5">
                       <BadgeAccion action={r.action} />

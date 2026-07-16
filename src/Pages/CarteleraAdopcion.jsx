@@ -5,8 +5,9 @@ import PaginadorPremium from '../components/PaginadorPremium';
 import FiltrosPills from '../components/FiltrosPills';
 
 const ESTILOS_ESTADO = {
-  Disponible: 'bg-green-100 text-green-700 border border-green-200',
-  Adoptado:   'bg-blue-100 text-blue-700 border border-blue-200',
+  Disponible:  'bg-green-100 text-green-700 border border-green-200',
+  'En Proceso':'bg-amber-100 text-amber-700 border border-amber-200',
+  Adoptado:    'bg-blue-100 text-blue-700 border border-blue-200',
 };
 
 function BadgeEstado({ estado }) {
@@ -81,7 +82,7 @@ export default function CarteleraAdopcion({ setVistaActual }) {
         especie: p.species,
         raza:    p.breed  ?? '—',
         edad:    p.age    ?? '—',
-        estado:  p.status === 'available' ? 'Disponible' : 'Adoptado',
+        estado:  p.status === 'available' ? 'Disponible' : p.status === 'en_proceso' ? 'En Proceso' : 'Adoptado',
       }));
       setMascotas(lista);
       setTotalPaginas(cuerpo.metadata?.totalPages || 1);
