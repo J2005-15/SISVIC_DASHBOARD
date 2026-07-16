@@ -298,7 +298,10 @@ export const adoptionService = {
 
   // Totales globales (no del array paginado) para las tarjetas de conteo
   getStats: () =>
-    api.get('/adoption-requests/stats')
+    api.get('/adoption-requests/stats'),
+
+  aprobarRechazar: (id, data) =>
+    api.patch(`/adoption-approve/${id}`, data)
 }
 
 // ─── MÉTODOS DE COLABORACIONES ──────────────────────────────────────────────

@@ -3,16 +3,9 @@ import {
   Users, Plus, Search, Pencil, Trash2, X, Save, Mail,
   Phone, MapPin, ChevronLeft, User, AlertTriangle, Loader
 } from 'lucide-react';
-import { propietariosService } from '../services/api';
+import { propietariosService, sectoresService } from '../services/api';
 import PaginadorPremium from '../components/PaginadorPremium';
 
-const SECTORES = {
-  1: 'El Pedregal',
-  2: 'La Victoria',
-  3: 'Santa Rosa',
-  4: 'Las Lomas',
-  5: 'El Centro'
-}
 
 const FORM_VACIO = { full_name: '', phone_number: '', id_sector: '', address: '', id_card: '' }
 
@@ -59,6 +52,7 @@ export default function GestionPropietarios({ setVistaActual, readOnly = false }
   const [formEditar, setFormEditar] = useState(FORM_VACIO)
   const [errorEditar, setErrorEditar] = useState('')
   const [modalBorrar, setModalBorrar] = useState(null)
+  const [sectores, setSectores] = useState([])
   const [cargando, setCargando] = useState(false)
   const [error, setError] = useState(null)
 
@@ -67,6 +61,12 @@ export default function GestionPropietarios({ setVistaActual, readOnly = false }
   const [paginaActual, setPaginaActual] = useState(1)
   const [totalPaginas, setTotalPaginas] = useState(1)
   const [totalRegistros, setTotalRegistros] = useState(0)
+
+  useEffect(() => {
+    sectoresService.getAll()
+      .then(r => setSectores(r.data?.sectors || []))
+      .catch(() => {})
+  }, [])
 
   // Se recarga cada vez que cambia la página o la búsqueda aplicada
   useEffect(() => {
@@ -272,7 +272,7 @@ export default function GestionPropietarios({ setVistaActual, readOnly = false }
                       required
                     >
                       <option value="">Seleccionar sector...</option>
-                      {Object.entries(SECTORES).map(([id, name]) => <option key={id} value={id}>{name}</option>)}
+                      {sectores.map(s => <option key={s.id_sector} value={s.id_sector}>{s.community_name}</option>)}
                     </select>
                   </div>
                 </Campo>
@@ -430,7 +430,7 @@ export default function GestionPropietarios({ setVistaActual, readOnly = false }
                       <td className="px-5 py-3.5 whitespace-nowrap">
                         <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#FFDF96]/25 text-[#765A05] border border-[#FFDF96]/40">
                           <MapPin className="w-3 h-3" />
-                          {SECTORES[p.id_sector] || '—'}
+                          {p.Sector?.community_name || '—'}
                         </span>
                       </td>
 
@@ -510,7 +510,7 @@ export default function GestionPropietarios({ setVistaActual, readOnly = false }
                 <select value={formEditar.id_sector} onChange={e => cambioEditar('id_sector', e.target.value)}
                   className={`${CLS_INPUT} pl-9 appearance-none bg-white`} required disabled={cargando}>
                   <option value="">Seleccionar...</option>
-                  {Object.entries(SECTORES).map(([id, name]) => <option key={id} value={id}>{name}</option>)}
+                  {sectores.map(s => <option key={s.id_sector} value={s.id_sector}>{s.community_name}</option>)}
                 </select>
               </div>
             </Campo>

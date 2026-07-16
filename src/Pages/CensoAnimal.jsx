@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Save, Pencil, Trash2, ChevronDown, ChevronLeft, AlertTriangle, MapPin, User, Plus, Search, Loader } from 'lucide-react'
-import { censoService, propietariosService } from '../services/api'
+import { censoService, propietariosService, sectoresService } from '../services/api'
 import PaginadorPremium from '../components/PaginadorPremium'
 import FiltrosPills from '../components/FiltrosPills'
 
@@ -37,7 +37,7 @@ const BREED_OPTIONS = {
   felino: ['Mestizo', 'Siamés', 'Persa', 'Bengalí', 'Maine Coon', 'Otro'],
 }
 
-const COLOR_OPTIONS = ['Negro', 'Blanco', 'Marrón', 'Gris', 'Dorado', 'Manchado', 'Bicolor', 'Tricolor']
+const COLOR_OPTIONS = ['Negro', 'Blanco', 'Marron', 'Gris', 'Dorado', 'Manchado', 'Bicolor', 'Tricolor']
 
 const FORMULARIO_VACIO = {
   id_owner: '',
@@ -140,15 +140,8 @@ export default function CensoAnimal({ setVistaActual, onGuardar }) {
       const respuestaPropietarios = await propietariosService.getAll({ limit: 1000 })
       setPropietarios(respuestaPropietarios.data?.data || [])
 
-      // Cargar sectores (si está disponible en el response de propietarios o censos)
-      // Por ahora usaremos un array default
-      setSectores([
-        { id_sector: 1, community_name: 'El Pedregal' },
-        { id_sector: 2, community_name: 'La Victoria' },
-        { id_sector: 3, community_name: 'Santa Rosa' },
-        { id_sector: 4, community_name: 'Las Lomas' },
-        { id_sector: 5, community_name: 'El Centro' },
-      ])
+      const respuestaSectores = await sectoresService.getAll()
+      setSectores(respuestaSectores.data?.sectors || [])
     } catch (err) {
       setError('Error al cargar catálogos: ' + (err.response?.data?.message || err.message))
       console.error('Error cargando catálogos:', err)

@@ -40,6 +40,7 @@ const COLUMNAS = ['Fecha', 'Adoptante', 'Teléfono', 'Mascota Interesada', 'Esta
 const CATEGORIAS_ESTADO = [
   { label: 'Todos',      value: '' },
   { label: 'Pendientes', value: 'pending' },
+  { label: 'En Proceso', value: 'En Proceso' },
   { label: 'Aprobadas',  value: 'Aprobada' },
   { label: 'Rechazadas', value: 'Rechazada' },
 ];

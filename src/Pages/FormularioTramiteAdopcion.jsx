@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { adoptionService } from '../services/api';
 import { Heart, ChevronLeft, ChevronDown, CheckCircle, ShieldCheck, PawPrint, User } from 'lucide-react';
-
-const API_BASE = 'https://sisvic-api.onrender.com';
 
 const CLS_INPUT =
   'w-full px-4 py-3 rounded-xl bg-white/80 border border-gray-200 text-sm text-gray-800 ' +
@@ -84,16 +82,13 @@ export default function FormularioTramiteAdopcion({ setVistaActual, solicitudSel
     setErrorMsg('');
 
     try {
-      await axios.patch(
-        `${API_BASE}/api/adoption-approve/${solicitudSeleccionada.id}`,
-        {
-          estado:       formulario.estado,
-          full_name:    formulario.nombre,
-          id_card:      formulario.idCard,
-          phone_number: formulario.telefono,
-          address:      formulario.direccion,
-        }
-      );
+      await adoptionService.aprobarRechazar(solicitudSeleccionada.id, {
+        estado:       formulario.estado,
+        full_name:    formulario.nombre,
+        id_card:      formulario.idCard,
+        phone_number: formulario.telefono,
+        address:      formulario.direccion,
+      });
       setVistaActual('solicitudes');
     } catch (err) {
       setErrorMsg(err.response?.data?.message ?? 'Error al guardar el trámite. Intente nuevamente.');
@@ -261,7 +256,6 @@ export default function FormularioTramiteAdopcion({ setVistaActual, solicitudSel
                 placeholder="Seleccione la resolución..."
               >
                 <option value="Aprobada">✅ Aprobada — Adopción completada y entregada</option>
-                <option value="En Proceso">🔄 En Proceso — Trámite administrativo en curso</option>
                 <option value="Rechazada">❌ Rechazada — No cumple los requisitos establecidos</option>
               </SelectCampo>
             </Campo>
