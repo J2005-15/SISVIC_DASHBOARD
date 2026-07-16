@@ -107,7 +107,7 @@ export default function FormularioCarteleraAdopcion({ setVistaActual }) {
       setPreview('');
       setVistaActual('cartelera');
     } catch (err) {
-      setErrorMsg(err.response?.data?.message ?? 'Error al publicar. Intente nuevamente.');
+      setErrorMsg(err.response?.data?.message ?? err.response?.data?.error ?? 'Error al publicar. Intente nuevamente.');
     } finally {
       setCargando(false);
     }

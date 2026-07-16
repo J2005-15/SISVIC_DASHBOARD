@@ -38,12 +38,24 @@ api.interceptors.response.use(
   }
 )
 
-// Cuando el body es FormData (subida de archivos), hay que anular el
-// Content-Type fijo de la instancia para que el navegador agregue el
-// boundary multipart automáticamente — si se deja 'application/json',
-// el backend no puede parsear el archivo.
+// Cuando el body es FormData (subida de archivos), hay que eliminar el
+// Content-Type fijo de la instancia ('application/json') para que el
+// navegador calcule el boundary multipart automáticamente.
+// Usar { headers: { 'Content-Type': undefined } } NO es suficiente en
+// axios v1.x: el default de la instancia prevalece. El único método
+// confiable es transformRequest, que corre después de fusionar headers
+// y tiene acceso directo al objeto final antes de enviar la petición.
 const formDataConfig = (data) =>
-  data instanceof FormData ? { headers: { 'Content-Type': undefined } } : undefined
+  data instanceof FormData
+    ? {
+        transformRequest: [
+          function (formData, headers) {
+            delete headers['Content-Type'];
+            return formData;
+          }
+        ]
+      }
+    : undefined
 
 // ─── MÉTODOS DE AUTENTICACIÓN ──────────────────────────────────────────────
 
