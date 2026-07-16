@@ -31,7 +31,7 @@ const CATEGORIAS_ESPECIE = [
   { label: 'Otros',   value: 'Otro' },
 ];
 
-const REGISTROS_POR_PAGINA = 10;
+const REGISTROS_POR_PAGINA = 4;
 
 export default function CarteleraAdopcion({ setVistaActual }) {
   const [mascotas,     setMascotas]     = useState([]);

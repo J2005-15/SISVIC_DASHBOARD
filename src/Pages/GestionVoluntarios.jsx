@@ -24,7 +24,7 @@ const CLS_INPUT =
   'placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#765A05]/20 ' +
   'focus:border-[#765A05] transition-all duration-200'
 
-const REGISTROS_POR_PAGINA = 10
+const REGISTROS_POR_PAGINA = 4
 
 function Campo({ label, children }) {
   return (

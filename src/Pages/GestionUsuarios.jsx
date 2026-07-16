@@ -13,7 +13,7 @@ const COLORES_ESTADO = {
 
 const FORMULARIO_VACIO = { full_name: '', email: '', id_role: '', status: 'activo', password: '' };
 
-const REGISTROS_POR_PAGINA = 10
+const REGISTROS_POR_PAGINA = 4
 
 // Pills de rol — el value vacío ('Todos') no envía filtro al backend.
 const CATEGORIAS_ROL = [

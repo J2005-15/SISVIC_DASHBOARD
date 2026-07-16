@@ -52,7 +52,7 @@ const FORMULARIO_VACIO = {
   id_sector: '',
 }
 
-const REGISTROS_POR_PAGINA = 10
+const REGISTROS_POR_PAGINA = 4
 
 // Botones de acceso rápido por categoría — el value vacío ('Todos') no
 // envía filtro de species al backend (ver cargarCenso).

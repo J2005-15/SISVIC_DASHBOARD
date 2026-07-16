@@ -45,7 +45,7 @@ const CATEGORIAS_ESTADO = [
   { label: 'Rechazadas', value: 'Rechazada' },
 ];
 
-const REGISTROS_POR_PAGINA = 10;
+const REGISTROS_POR_PAGINA = 4;
 
 export default function SolicitudesAdopcion({ setVistaActual, setSolicitudSeleccionada }) {
   const [solicitudes, setSolicitudes] = useState([]);

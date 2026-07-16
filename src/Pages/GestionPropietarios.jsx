@@ -9,7 +9,7 @@ import PaginadorPremium from '../components/PaginadorPremium';
 
 const FORM_VACIO = { full_name: '', phone_number: '', id_sector: '', address: '', id_card: '' }
 
-const REGISTROS_POR_PAGINA = 10
+const REGISTROS_POR_PAGINA = 4
 
 const CLS_INPUT =
   'w-full px-3.5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm text-gray-800 ' +

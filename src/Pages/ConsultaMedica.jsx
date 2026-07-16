@@ -69,7 +69,7 @@ const CATEGORIAS_MOTIVO = [
   { label: 'Emergencia',      value: 'Emergencia' },
 ];
 
-const REGISTROS_POR_PAGINA = 10;
+const REGISTROS_POR_PAGINA = 4;
 
 // ─── COMPONENTE PRINCIPAL ────────────────────────────────────────────────────
 

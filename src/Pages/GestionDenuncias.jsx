@@ -97,7 +97,7 @@ function SelectCampo({ name, value, onChange, placeholder, required = true, disa
 
 const COLUMNAS = ['N° Expediente', 'Descripción', 'Sector', 'Urgencia', 'Estado', 'Acciones'];
 
-const REGISTROS_POR_PAGINA = 10
+const REGISTROS_POR_PAGINA = 4
 
 // id_animal ya no se captura desde el formulario: la mayoría de las denuncias
 // son sobre animales de la calle que aún no existen en el Censo. El animal

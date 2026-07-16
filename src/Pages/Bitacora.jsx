@@ -45,7 +45,7 @@ function formatearFecha(iso) {
 
 const COLUMNAS = ['Fecha', 'Usuario', 'Acción', 'Módulo Afectado', 'Descripción'];
 
-const REGISTROS_POR_PAGINA = 10;
+const REGISTROS_POR_PAGINA = 4;
 
 // ─── VISTA DE SOLO LECTURA — sin botón de "Nuevo" ni acciones de Editar/Eliminar.
 // Es una bitácora de auditoría: el administrador consulta, nunca modifica.

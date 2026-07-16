@@ -41,7 +41,7 @@ function formatearFecha(iso) {
 
 const COLUMNAS = ['Fecha Registro', 'Colaborador', 'Teléfono', 'Monto (Bs.)', 'Nro. Referencia', 'Fecha del Pago', 'Estado', 'Acciones'];
 
-const REGISTROS_POR_PAGINA = 10;
+const REGISTROS_POR_PAGINA = 4;
 
 export default function GestionColaboraciones() {
   const [colaboraciones, setColaboraciones] = useState([]);

@@ -127,7 +127,7 @@ const CATEGORIAS_ESTADO_STOCK = [
   { label: 'Óptimo',  value: 'Óptimo' },
 ];
 
-const REGISTROS_POR_PAGINA = 10;
+const REGISTROS_POR_PAGINA = 4;
 
 // ─── COMPONENTE PRINCIPAL ────────────────────────────────────────────────────
 
